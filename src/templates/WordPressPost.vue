@@ -1,6 +1,7 @@
 <template>
   <Layout>
     <h1 v-html="$page.wordPressPost.title"/>
+ 
 
     <img
       v-if="$page.wordPressPost.betterFeaturedImage"
@@ -8,6 +9,15 @@
       :width="$page.wordPressPost.betterFeaturedImage.mediaDetails.sizes.large.width"
       :alt="$page.wordPressPost.betterFeaturedImage.altText"
     />
+
+       <img
+      v-else-if="$page.wordPressPost.featuredMedia"
+      :src="$page.wordPressPost.featuredMedia.sourceUrl"
+      :width="$page.wordPressPost.featuredMedia.mediaDetails.width"
+      :alt="$page.wordPressPost.featuredMedia.altText"
+    />
+
+
     <div v-html="$page.wordPressPost.content"/>
     <template v-if="$page.wordPressPost.categories.length">
       <h4>Posted in</h4>
