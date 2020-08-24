@@ -1,11 +1,12 @@
 <template>
   <Layout>
     <h1 v-html="$page.wordPressPost.title"/>
+
     <img
-      v-if="$page.wordPressPost.featuredMedia"
-      :src="$page.wordPressPost.featuredMedia.sourceUrl"
-      :width="$page.wordPressPost.featuredMedia.mediaDetails.width"
-      :alt="$page.wordPressPost.featuredMedia.altText"
+      v-if="$page.wordPressPost.betterFeaturedImage"
+      :src="$page.wordPressPost.betterFeaturedImage.mediaDetails.sizes.large.sourceUrl"
+      :width="$page.wordPressPost.betterFeaturedImage.mediaDetails.sizes.large.width"
+      :alt="$page.wordPressPost.betterFeaturedImage.altText"
     />
     <div v-html="$page.wordPressPost.content"/>
     <template v-if="$page.wordPressPost.categories.length">
@@ -39,6 +40,24 @@ query WordPressPost ($id: ID!) {
         width
       }
     }
+
+    betterFeaturedImage {
+      altText
+          mediaDetails {
+            sizes {
+              large {
+                sourceUrl
+                width
+                height
+              }
+              medium {
+                sourceUrl
+                width
+                height
+              }
+            }
+          }
+        }
     categories {
       id
       title

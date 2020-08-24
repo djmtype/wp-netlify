@@ -12,7 +12,7 @@ module.exports = {
     {
       use: '@gridsome/source-wordpress',
       options: {
-        baseUrl: 'http://wp-netlify.spinline.xyz:8888', // required
+        baseUrl: process.env.WORDPRESS_URL, // required
         typeName: 'WordPress', // GraphQL schema name (Optional)
       }
     }
